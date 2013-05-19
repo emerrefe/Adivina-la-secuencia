@@ -39,6 +39,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,6 +57,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SelAvatar.xaml.cs">
       <DependentUpon>SelAvatar.xaml</DependentUpon>
     </Compile>
@@ -88,6 +94,9 @@
   <ItemGroup>
     <Resource Include="bocadillo.png" />
     <Resource Include="bocadilloGenial.png" />
+    <Resource Include="check.png" />
+    <Resource Include="check2.png" />
+    <Resource Include="cross.png" />
     <Resource Include="elefanteSinFondo.png" />
     <Resource Include="Gerald_G_Simple_Fruit_%28FF_Menu%29.png" />
     <Resource Include="Gerald_G_Simple_Fruit_%28FF_Menu%29_1.png" />
@@ -102,6 +111,12 @@
       <Project>{ECADE211-1DFB-461D-B253-44E1CD5401FC}</Project>
       <Name>controlSalir</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

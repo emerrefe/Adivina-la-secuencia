@@ -88,19 +88,24 @@ namespace WpfApplication1
                     aniadir(st, im, i);
 
                 }
+
+                
                 listView2.Items.Add(st);
+
                 listView1.Items.Clear();
                 contador = 0;
                 resultado.Clear();
             }
 
+            
         }
 
         private void aniadir(StackPanel st, Image img, int posicion)
         {
             img.Source = resultado[posicion].Source;
             img.Height = 80;
-            st.Children.Add(img);            
+            st.Children.Add(img);
+            
         }
 	}
 }
