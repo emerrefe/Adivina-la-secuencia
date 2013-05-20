@@ -118,7 +118,6 @@ namespace WpfApplication1
 
                 }
 
-              
                 listView2.Items.Add(st);
          
 
