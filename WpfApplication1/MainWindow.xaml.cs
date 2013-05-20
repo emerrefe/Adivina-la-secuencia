@@ -38,7 +38,7 @@ namespace WpfApplication1
             //para la imagen del check
             imaCheck.Width = 80;
             BitmapCheck.BeginInit();
-            BitmapCheck.UriSource = new Uri(@"C:\Users\MRF\Desktop\versiones ipo\WpfApplication1\check.png");
+            BitmapCheck.UriSource = new Uri(@"check.png", UriKind.Relative);
             BitmapCheck.EndInit();
             BitmapCheck.DecodePixelWidth = 80;
             imaCheck.Source = BitmapCheck;
@@ -46,7 +46,7 @@ namespace WpfApplication1
             //para la imagen de la cruz
             imaCross.Width = 80;
             BitmapCross.BeginInit();
-            BitmapCross.UriSource = new Uri(@"C:\Users\MRF\Desktop\versiones ipo\WpfApplication1\cross.png");
+            BitmapCross.UriSource = new Uri(@"cross.png", UriKind.Relative);
             BitmapCross.EndInit();
             BitmapCross.DecodePixelWidth = 80;
             imaCross.Source = BitmapCross;
