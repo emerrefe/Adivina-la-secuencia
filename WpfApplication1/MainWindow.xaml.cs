@@ -22,13 +22,35 @@ namespace WpfApplication1
         int contador = 0;
         List<Image> resultado=new List<Image>(); 
 
+
+        Image imaCheck = new Image();
+        BitmapImage BitmapCheck = new BitmapImage();
+
+        Image imaCross = new Image();
+        BitmapImage BitmapCross = new BitmapImage();
+
+
 		public MainWindow(Image img)
 		{
 			this.InitializeComponent();
             this.avatar.Source = img.Source;
-            
-			// A partir de este punto se requiere la inserción de código para la creación del objeto.
-		}
+
+            //para la imagen del check
+            imaCheck.Width = 80;
+            BitmapCheck.BeginInit();
+            BitmapCheck.UriSource = new Uri(@"C:\Users\MRF\Desktop\versiones ipo\WpfApplication1\check.png");
+            BitmapCheck.EndInit();
+            BitmapCheck.DecodePixelWidth = 80;
+            imaCheck.Source = BitmapCheck;
+
+            //para la imagen de la cruz
+            imaCross.Width = 80;
+            BitmapCross.BeginInit();
+            BitmapCross.UriSource = new Uri(@"C:\Users\MRF\Desktop\versiones ipo\WpfApplication1\cross.png");
+            BitmapCross.EndInit();
+            BitmapCross.DecodePixelWidth = 80;
+            imaCross.Source = BitmapCross;
+       	}
 
         private void resaltar(object sender, MouseEventArgs e)
         {
@@ -89,8 +111,16 @@ namespace WpfApplication1
 
                 }
 
-                
+                for (int i = 4; i < 8; i++)
+                {
+                    Image im = new Image();
+                    aniadirComprobacion(st, im, i);
+
+                }
+
+              
                 listView2.Items.Add(st);
+         
 
                 listView1.Items.Clear();
                 contador = 0;
@@ -105,7 +135,22 @@ namespace WpfApplication1
             img.Source = resultado[posicion].Source;
             img.Height = 80;
             st.Children.Add(img);
-            
+      
         }
+
+
+        private void aniadirComprobacion(StackPanel st, Image img, int posicion)
+        {
+            
+            //aquí deberia ir la logica
+            //creo que deberiamos poner de momento que si esta bien un check y si esta mal una cruz
+            //y ya veremos si metemos lo del check con el palito, lo de si esta pero en una posicion que no debe y no nos complicamos
+
+            img.Source = imaCheck.Source;
+            img.Height = 80;
+            st.Children.Add(img);
+        }
+
+
 	}
 }

@@ -32,8 +32,8 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-		<StackPanel Margin="280,8,169,245" Background="#FFEDEA7D">
-            <ListView Height="509" Name="listView2" Background="#FFEDEA7D">
+		<StackPanel Margin="280,8,169,245" Background="#FFEDEA7D" Name="stackArriba">
+            <ListView Name="listView2" Background="#FFEDEA7D" Height="185">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Vertical" CanVerticallyScroll="False"></StackPanel>
@@ -106,7 +106,7 @@
 		</Grid>
         <Button Content=" ¡COMPRUEBA! " FontWeight="Bold" FontFamily="Tekton Pro" FontSize="24" VerticalContentAlignment="Center" Margin="280,0,169,8.943" VerticalAlignment="Bottom" Height="123.114" Click="comprobar" />
         <StackPanel Margin="280,0,169,145" Name="stackPanel1" Height="87" VerticalAlignment="Bottom" Background="#FFEBE87D">
-            <ListView Height="86" Name="listView1" Drop="soltar" Background="#FFEDEA7D" AllowDrop="True" SelectionMode="Extended" HorizontalContentAlignment="Center">
+            <ListView Height="86" Name="listView1" Drop="soltar" Background="#FFEDEA7D" AllowDrop="True" SelectionMode="Extended" HorizontalContentAlignment="Center" ToolTip="Arrastra las frutas aquí">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" CanVerticallyScroll="False"></StackPanel>
