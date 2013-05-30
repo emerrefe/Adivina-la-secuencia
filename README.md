@@ -1,5 +1,7 @@
 Juego infantil en desarrollo.
 
+[![avatares](https://github.com/emerrefe/Adivina-la-secuencia/raw/master/capturas/Intro.png)] (https://github.com/emerrefe/Adivina-la-secuencia/raw/master/capturas/Intro.png)
+
 La finalidad es la de encontrar una secuencia de frutas determinada por el sistema de forma aleatoria.
 
 En esta imagen se puede observar que existen varios personajes a elegir:
