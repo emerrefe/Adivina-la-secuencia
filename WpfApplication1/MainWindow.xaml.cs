@@ -20,14 +20,18 @@ namespace WpfApplication1
 
         private LinearGradientBrush colorIni;
         int contador = 0;
-        List<Image> resultado=new List<Image>(); 
-
-
+        List<Image> resultado=new List<Image>();
+        List<Image> secuenciaCorrecta = new List<Image>();
+        int contCheck = 0;
+                
         Image imaCheck = new Image();
         BitmapImage BitmapCheck = new BitmapImage();
 
         Image imaCross = new Image();
         BitmapImage BitmapCross = new BitmapImage();
+
+        Image imaOtro = new Image();
+        BitmapImage BitmapOtro = new BitmapImage();
 
 
 		public MainWindow(Image img)
@@ -50,6 +54,16 @@ namespace WpfApplication1
             BitmapCross.EndInit();
             BitmapCross.DecodePixelWidth = 80;
             imaCross.Source = BitmapCross;
+
+            //para la imagen de la cruz
+            imaOtro.Width = 80;
+            BitmapOtro.BeginInit();
+            BitmapOtro.UriSource = new Uri(@"check2.png", UriKind.Relative);
+            BitmapOtro.EndInit();
+            BitmapOtro.DecodePixelWidth = 80;
+            imaOtro.Source = BitmapOtro;
+
+            generarSecuencia();
        	}
 
         private void resaltar(object sender, MouseEventArgs e)
@@ -75,6 +89,7 @@ namespace WpfApplication1
         {
             DataObject dataO = new DataObject(((Image)sender));
             DragDrop.DoDragDrop((Image)sender, dataO, DragDropEffects.Move);
+            
         }
 
         private void soltar(object sender, DragEventArgs e)
@@ -108,18 +123,21 @@ namespace WpfApplication1
                 {
                     Image im = new Image();
                     aniadir(st, im, i);
-
                 }
 
-                for (int i = 4; i < 8; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     Image im = new Image();
                     aniadirComprobacion(st, im, i);
-
                 }
 
-                listView2.Items.Add(st);
-         
+                if (contCheck == 4)
+                {
+                    listView1.AllowDrop = false;
+                }
+                else contCheck = 0;
+
+                listView2.Items.Add(st);         
 
                 listView1.Items.Clear();
                 contador = 0;
@@ -133,24 +151,83 @@ namespace WpfApplication1
         {
             img.Source = resultado[posicion].Source;
             img.Height = 80;
-            st.Children.Add(img);
-      
+            st.Children.Add(img);      
         }
 
 
         private void aniadirComprobacion(StackPanel st, Image img, int posicion)
         {
-            
-            //aquí deberia ir la logica
-            //creo que deberiamos poner de momento que si esta bien un check y si esta mal una cruz
-            //y ya veremos si metemos lo del check con el palito, lo de si esta pero en una posicion que no debe y no nos complicamos
-
-            img.Source = imaCheck.Source;
+                         
+            Image aux = new Image();
+            aux = obtenerCheck(comprobar(posicion));
+            img.Source = aux.Source;
             img.Height = 80;
-            st.Children.Add(img);
+            st.Children.Add(img);            
+        }
+
+        private void generarSecuencia()
+        {
+            Random random = new Random();
+            for(int i=0; i<4;i++)
+            {
+                secuenciaCorrecta.Add(obtenerImagen(random.Next(1, 4)));
+            }
 
         }
 
+        private Image obtenerImagen(int numero)
+        {
+            Image fruta = null;
 
+            switch(numero){
+                case 1: fruta = imgUvas;                    
+                    break;
+                case 2: fruta = imgFresa;
+                    break;
+                case 3: fruta = imgNaranja;
+                    break;
+                case 4: fruta = imgLimon;
+                    break;
+            }
+            return fruta;
+        }
+
+        private Image obtenerCheck(int numero)
+        {
+            Image check = null;
+
+            switch (numero)
+            {
+                case 1: check = imaCheck;
+                    break;
+                case 2: check = imaOtro;
+                    break;
+                case 0: check = imaCross;
+                    break; 
+            }
+            return check;
+        }
+
+
+        private int comprobar(int pResult)
+        {
+            int valor = 0;
+                                    
+            if (resultado[pResult].Source.Equals(secuenciaCorrecta[0].Source)
+                || resultado[pResult].Source.Equals(secuenciaCorrecta[1].Source)
+                || resultado[pResult].Source.Equals(secuenciaCorrecta[2].Source)
+                || resultado[pResult].Source.Equals(secuenciaCorrecta[3].Source))                
+            {
+                if (resultado[pResult].Equals(secuenciaCorrecta[pResult]))
+                {
+                    valor = 1;
+                    contCheck++;
+                }
+                else valor = 2;                         
+            }            
+            return valor;
+        }
+        
 	}
+
 }

@@ -5,7 +5,7 @@
 	x:Class="WpfApplication1.MainWindow"
 	x:Name="Window"
 	Title="MainWindow"
-	Width="1000" Height="800" IsEnabled="True" SizeToContent="Manual" xmlns:my="clr-namespace:controlSalir;assembly=controlSalir">
+	Width="1014" Height="746" IsEnabled="True" SizeToContent="Manual" xmlns:my="clr-namespace:controlSalir;assembly=controlSalir" WindowStartupLocation="CenterScreen" WindowState="Maximized">
 	<Window.OpacityMask>
 		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 			<GradientStop Color="Black" Offset="0"/>
@@ -33,14 +33,14 @@
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 		<StackPanel Margin="280,8,169,245" Background="#FFEDEA7D" Name="stackArriba">
-            <ListView Name="listView2" Background="#FFEDEA7D" Height="185">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Vertical" CanVerticallyScroll="False"></StackPanel>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-            </ListView>
-        </StackPanel>
+			<ListView x:Name="listView2" Background="#FFEDEA7D" VerticalContentAlignment="Center" Height="469" RenderTransformOrigin="0.5,0.5" BorderBrush="#00828790">
+				<ListView.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Vertical" CanVerticallyScroll="True"/>
+					</ItemsPanelTemplate>
+				</ListView.ItemsPanel>
+			</ListView>
+		</StackPanel>
         <Grid Margin="0,8,8,145" Width="146" Background="#FFEDEA7D" HorizontalAlignment="Right">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="0.498*"/>
@@ -59,7 +59,7 @@
 						<GradientStop Color="#FF145A0F" Offset="1"/>
 					</LinearGradientBrush>
 				</Button.Background>
-				<Image Height="60.846" Width="68" Source="Gerald_G_Simple_Fruit_(FF_Menu).png" MouseDown="inicioArrastrar" />
+				<Image Height="60.846" Width="68" Source="Gerald_G_Simple_Fruit_(FF_Menu).png" MouseDown="inicioArrastrar" Name="imgUvas" AllowDrop="False" />
 			</Button>
 			<Button Margin="0" Grid.Row="2" Width="80" d:LayoutOverrides="Width, GridBox" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80">
 				<Button.Background>
@@ -70,7 +70,7 @@
 						<GradientStop Color="#FF145A0F" Offset="1"/>
 					</LinearGradientBrush>
 				</Button.Background>
-				<Image Height="60.846" Width="58" Source="Gerald_G_Simple_Fruit_(FF_Menu)_1.png" MouseDown="inicioArrastrar" />
+				<Image Height="60.846" Width="58" Source="Gerald_G_Simple_Fruit_(FF_Menu)_1.png" MouseDown="inicioArrastrar" Name="imgFresa" />
 			</Button>
 			<Button Margin="0" Grid.Row="4" Width="80" d:LayoutOverrides="Width, GridBox" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80">
 				<Button.Background>
@@ -81,7 +81,7 @@
 						<GradientStop Color="#FF145A0F" Offset="1"/>
 					</LinearGradientBrush>
 				</Button.Background>
-				<Image Height="62" Width="65" Source="Gerald_G_Simple_Fruit_(FF_Menu)_3.png" MouseDown="inicioArrastrar" />
+				<Image Height="62" Width="65" Source="Gerald_G_Simple_Fruit_(FF_Menu)_3.png" MouseDown="inicioArrastrar" Name="imgLimon" />
 			</Button>
 			<Button Margin="0" Grid.Row="3" Width="80" d:LayoutOverrides="Width, GridBox" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80">
 				<Button.Background>
@@ -92,7 +92,7 @@
 						<GradientStop Color="#FF145A0F" Offset="1"/>
 					</LinearGradientBrush>
 				</Button.Background>
-				<Image Height="64.338" Width="66" Source="Gerald_G_Simple_Fruit_(FF_Menu)_4.png" MouseDown="inicioArrastrar" />
+				<Image Height="64.338" Width="66" Source="Gerald_G_Simple_Fruit_(FF_Menu)_4.png" MouseDown="inicioArrastrar" Name="imgNaranja" />
 			</Button>
         </Grid>
 		
@@ -102,20 +102,20 @@
 				<RowDefinition Height="351"/>
 			</Grid.RowDefinitions>
 			<Image Margin="17,0,8,0" Grid.Row="1" Source="HipoSolo.png" Name="avatar" />
-			<Image Margin="8,0,0,8" Source="bocadilloGenial.png"/>
+			<Image Margin="8,0,0,8" Source="bocadilloInserta.png"/>
 		</Grid>
         <Button Content=" ¡COMPRUEBA! " FontWeight="Bold" FontFamily="Tekton Pro" FontSize="24" VerticalContentAlignment="Center" Margin="280,0,169,8.943" VerticalAlignment="Bottom" Height="123.114" Click="comprobar" />
         <StackPanel Margin="280,0,169,145" Name="stackPanel1" Height="87" VerticalAlignment="Bottom" Background="#FFEBE87D">
             <ListView Height="86" Name="listView1" Drop="soltar" Background="#FFEDEA7D" AllowDrop="True" SelectionMode="Extended" HorizontalContentAlignment="Center" ToolTip="Arrastra las frutas aquí">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" CanVerticallyScroll="False"></StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" CanVerticallyScroll="False"></StackPanel>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             </ListView>
         </StackPanel>
         <my:MainControl Name="btnSalir" MouseEnter="resaltar" MouseLeave="desresaltar" Height="141" VerticalAlignment="Bottom" Width="164" HorizontalAlignment="Right" MouseUp="salir" />
-        <TextBox x:Name="boxAdivina" HorizontalAlignment="Left" Height="116" Margin="8,10,0,0" TextWrapping="Wrap" Text="Adivina la secuencia" VerticalAlignment="Top" Width="268" FontFamily="Comic Sans MS" FontSize="29.333" FontWeight="Bold" Background="#00000000" HorizontalContentAlignment="Center">
+        <TextBox x:Name="boxAdivina" HorizontalAlignment="Left" Height="89" Margin="8,10,0,0" TextWrapping="Wrap" Text="Adivina la secuencia" VerticalAlignment="Top" Width="268" FontFamily="Comic Sans MS" FontSize="29.333" FontWeight="Bold" Background="#00000000" HorizontalContentAlignment="Center">
         	<TextBox.BorderBrush>
         		<LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
         			<GradientStop Color="#00ABADB3" Offset="0.05"/>
